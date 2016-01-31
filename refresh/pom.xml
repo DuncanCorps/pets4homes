@@ -6,9 +6,11 @@
   <artifactId>pets4homes-refresh</artifactId>
   <version>1.0.0</version>
   <name>pets4homes-refresh</name>
-  
-  <properties>
+  <description>Pets4Homes Refresh</description>
 
+  <properties>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
 
   <dependencies>
@@ -22,6 +24,11 @@
       <artifactId>selenium-htmlunit-driver</artifactId>
       <version>2.49.1</version>
     </dependency>
+    <dependency>
+      <groupId>commons-validator</groupId>
+      <artifactId>commons-validator</artifactId>
+      <version>1.5.0</version>
+    </dependency>
   </dependencies>
 
   <build>
@@ -32,7 +39,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>uk.me.duncancorps.pets4homes.Refresh</mainClass>
+              <mainClass>uk.me.duncan_corps.pets4homes.Refresh</mainClass>
             </manifest>
           </archive>
           <descriptorRefs>
