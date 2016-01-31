@@ -15,6 +15,10 @@ import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import com.google.common.collect.Sets;
 
 public class Refresh {
+	private static final String PETS4HOMES_SCHEME_HOST = "https://www.pets4homes.co.uk/";
+	private static final String PETS4HOMES_ACCOUNT_PATH = "account/";
+	private static final String PETS4HOMES_LOG_IN_PATH = "login/";
+
 	private static void usage(String... errors) {
 		System.err.println(
 				"Usage: java -jar pets4homes-refresh-1.0.0-jar-with-dependencies.jar <emailAddress> <password>");
@@ -52,7 +56,7 @@ public class Refresh {
 					passWebElement.sendKeys(passValue);
 					loginWebElement.click();
 
-					loggedIn = currentUrlIs(webDriver, "http://www.pets4homes.co.uk/account/");
+					loggedIn = currentUrlIs(webDriver, PETS4HOMES_SCHEME_HOST + PETS4HOMES_ACCOUNT_PATH);
 				}
 			}
 		}
@@ -66,8 +70,9 @@ public class Refresh {
 
 		do {
 			clicked = false;
-			webDriver.get("http://www.pets4homes.co.uk/account/manage-adverts/");
-			List<WebElement> aWebElements = finds(webDriver, By.cssSelector("table.manageTable a"));
+			webDriver.get(PETS4HOMES_SCHEME_HOST + PETS4HOMES_ACCOUNT_PATH + "manage-adverts/");
+			List<WebElement> aWebElements = finds(webDriver,
+					By.cssSelector("div.manageadvert div.managebuttons a.btn"));
 
 			for (WebElement aWebElement : aWebElements) {
 				if (!clicked) {
@@ -97,7 +102,7 @@ public class Refresh {
 				String passValue = arguments[1];
 
 				WebDriver webDriver = new HtmlUnitDriver(); // FirefoxDriver();
-				webDriver.get("http://www.pets4homes.co.uk/login/");
+				webDriver.get(PETS4HOMES_SCHEME_HOST + PETS4HOMES_LOG_IN_PATH);
 
 				final boolean loggedIn = logIn(webDriver, emailValue, passValue);
 
