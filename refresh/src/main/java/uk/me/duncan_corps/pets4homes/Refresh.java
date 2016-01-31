@@ -16,9 +16,10 @@ import com.google.common.collect.Sets;
 
 public class Refresh {
 	private static void usage(String... errors) {
-		System.out.println("Usage: java -jar pets4homes-refresh.jar <emailAddress> <password>");
+		System.err.println(
+				"Usage: java -jar pets4homes-refresh-1.0.0-jar-with-dependencies.jar <emailAddress> <password>");
 		for (String error : errors) {
-			System.out.println("Error: " + error);
+			System.err.println("Error: " + error);
 		}
 	}
 
